@@ -556,7 +556,20 @@ class PronterWindow(wx.Frame,pronsole.pronsole):
         self.logbox=wx.TextCtrl(self.panel,style = wx.TE_MULTILINE,size=(350,-1))
         self.logbox.SetEditable(0)
         lrs.Add(self.logbox,1,wx.EXPAND)
-        lbrs=wx.BoxSizer(wx.HORIZONTAL)
+        lbrs=wx.BoxSizer(wx.HORIZONTAL)        
+        lbrs2=wx.BoxSizer(wx.HORIZONTAL)
+
+        file = open("gcodes.txt")
+        gcodeList = file.readlines()
+        file.close()
+        
+        self.insertbtn=wx.Button(self.panel,-1,("Insert"))
+        self.combobox=wx.ComboBox(self.panel, 3, "GCodes defined in gCodes.txt", (105, 30), wx.DefaultSize,gcodeList, wx.CB_DROPDOWN|wx.CB_SORT)
+        self.combobox.SetEditable(0)
+        self.insertbtn.Bind(wx.EVT_BUTTON,self.insertgcode)
+        lbrs2.Add(self.insertbtn)
+        lbrs2.Add(self.combobox,3, wx.EXPAND)
+               
         self.commandbox=wx.TextCtrl(self.panel,style = wx.TE_PROCESS_ENTER)
         self.commandbox.Bind(wx.EVT_TEXT_ENTER,self.sendline)
         #self.printerControls.append(self.commandbox)
@@ -565,6 +578,7 @@ class PronterWindow(wx.Frame,pronsole.pronsole):
         self.sendbtn.Bind(wx.EVT_BUTTON,self.sendline)
         #self.printerControls.append(self.sendbtn)
         lbrs.Add(self.sendbtn)
+        lrs.Add(lbrs2,0,wx.EXPAND)
         lrs.Add(lbrs,0,wx.EXPAND)
 
         #left pane
@@ -1189,6 +1203,16 @@ class PronterWindow(wx.Frame,pronsole.pronsole):
         wx.CallAfter(self.logbox.AppendText,">>>"+command+"\n")
         self.onecmd(str(command))
         self.commandbox.SetSelection(0,len(command))
+
+    def insertgcode(self,e):
+        gcodedesc=self.combobox.GetValue()
+        ind=gcodedesc.find(':')
+        gcode=gcodedesc[0:ind]
+        
+        if not len(gcode):
+            return
+        wx.CallAfter(self.commandbox.AppendText,gcode+" ")
+        self.commandbox.SetFocus()
 
     def clearOutput(self,e):
         self.logbox.Clear()
