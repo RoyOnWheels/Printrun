@@ -1,0 +1,68 @@
+G28: Move to Origin
+G20: Set Units to Inches
+G21: Set Units to Millimeters
+G90: Set to Absolute Positioning
+G91: Set to Relative Positioning
+M0: Stop
+M18: Disable all stepper motors
+M20: List SD card
+M21: Initialise SD card
+M22: Release SD card
+M23: Select SD file
+M24: Start/resume SD print
+M25: Pause SD print
+M26: Set SD position
+M27: Report SD print status
+M28: Begin write to SD card
+M29: Stop writing to SD card
+M40: Eject
+M41: Loop
+M42: Stop on material exhausted
+M43: Stand by on material exhausted
+M80: ATX Power On
+M81: ATX Power Off
+M82: set extruder to absolute mode
+M83: set extruder to relative mode
+M84: Stop idle hold
+M92: Set axis_steps_per_unit
+M101 Turn extruder 1 on Forward
+M102 Turn extruder 1 on Reverse
+M103 Turn all extruders off
+M104: Set Extruder Temperature (Fast)
+M105: Get Extruder Temperature
+M106: Fan On
+M107: Fan Off
+M108: Set Extruder Speed
+M109: Set Extruder Temperature
+M110: Set Current Line Number
+M111: Set Debug Level
+M112: Emergency Stop
+M113: Set Extruder PWM
+M114: Get Current Position
+M115: Get Firmware Version and Capabilities
+M116: Wait
+M117: Get Zero Position
+M118: Negotiate Features
+M119: Get Endstop Status
+M126: Open Valve
+M127: Close Valve
+M128: Extruder Pressure PWM
+M129: Extruder pressure off
+M140: Bed Temperature (Fast)
+M141: Chamber Temperature (Fast)
+M142: Holding Pressure
+M143: Maximum hot-end temperature
+M160: Number of mixed materials
+M203: Record Z adjustment
+M226: Gcode Initiated Pause
+M227: Enable Automatic Reverse and Prime
+M228: Disable Automatic Reverse and Prime
+M229: Enable Automatic Reverse and Prime
+M230: Disable / Enable Wait for Temperature Change
+M240: Start conveyor belt motor
+M241: Stop conveyor belt motor
+M245: Start cooler
+M246: Stop cooler
+M300: Play beep sound
+T: Select Tool 
+
